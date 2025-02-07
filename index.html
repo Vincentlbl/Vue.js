@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire de Connexion</title>
+</head>
+
+<body>
+    <div id="app"></div>
+
+    <script type="module">
+        import { h, createApp } from './node_modules/vue/dist/vue.esm-browser.prod.js';
+
+        const Login = {
+            data() {
+                return {
+                    username: '',
+                    password: ''
+                };
+            },
+            methods: {
+                handleSubmit(event) {
+                    event.preventDefault();
+                    alert(`Username: ${this.username}\nPassword: ${this.password}`);
+                }
+            },
+            render() {
+                return h('form', { onSubmit: this.handleSubmit }, [
+                    h('label', { for: 'username' }, 'Nom d’utilisateur : '),
+                    h('input', {
+                        id: 'username',
+                        type: 'text',
+                        value: this.username,
+                        onInput: event => this.username = event.target.value
+                    }),
+                    h('br'),
+                    h('label', { for: 'password' }, 'Mot de passe : '),
+                    h('input', {
+                        id: 'password',
+                        type: 'password',
+                        value: this.password,
+                        onInput: event => this.password = event.target.value
+                    }),
+                    h('br'),
+                    h('button', { type: 'submit' }, 'Se connecter')
+                ]);
+            }
+        };
+
+        createApp(Login).mount('#app');
+    </script>
+</body>
+
+</html>
