@@ -1,22 +1,25 @@
 <template>
-    <form @submit.prevent="emitSubmit" @reset="emitReset">
-      <label for="username">Nom d'utilisateur</label>
-      <input type="text" v-model="username" id="username" required />
-  
-      <label for="password">Mot de passe</label>
-      <input type="password" v-model="password" id="password" required />
-  
+    <form class="custom-form" @submit.prevent="emitSubmit" @reset.prevent="emitReset">
+        <section class="custom-form_fields-section">
+            <FieldComponent v-for="field in $props.data.fields" :key="field.id" :data="field" />
+        </section>
+        
+     
       
     </form>
   </template>
   
   <script setup lang="ts">
+
+
+  import FieldComponent from './FieldComponent.vue';
   import { ref } from 'vue';
   
   const username = ref('');
   const password = ref('');
   
   const emit = defineEmits(['submit', 'reset']);
+  defineProps<FormComponentProperties>();
   
   const emitSubmit = () => {
     emit('submit', { username: username.value, password: password.value });
@@ -27,8 +30,26 @@
     password.value = '';
     emit('reset');
   };
+
+interface FormComponentProperties {
+    data: {
+        fields: Array <{id: string;type?: string;placeholder: string;class?: string;}>;
+        buttons: {id: string;type: 'submit' | 'reset' | 'button';textContent: string;class?: string;}[];
+    }
+  }
+
+
   </script>
   
+
+
+
+
+
+
+
+
+
   <style scoped>
   form {
     display: flex;

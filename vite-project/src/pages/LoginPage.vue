@@ -35,6 +35,13 @@ const formData = reactive({
         textContent: 'Se connecter',
         class: 'is-primary'
     },
+    {
+        id: 'reset',
+        type: 'reset',
+        textContent: 'Effacer',
+        class: 'is-danger'
+    }
+
         
     ]
 })
