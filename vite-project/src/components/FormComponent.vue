@@ -6,8 +6,7 @@
       <label for="password">Mot de passe</label>
       <input type="password" v-model="password" id="password" required />
   
-      <button type="submit">Soumettre</button>
-      <button type="reset">Réinitialiser</button>
+      
     </form>
   </template>
   

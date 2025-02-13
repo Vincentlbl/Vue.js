@@ -10,6 +10,7 @@
             @submit="handleSubmit" 
             @reset="handleReset"
         />
+        <small class="login-choice">Pas encore de compte ? <router-link to="/register">Inscrivez-vous</router-link></small>
     </main>
 </template>
 
