@@ -15,8 +15,29 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { reactive, ref } from 'vue';
 import FormComponent from '../components/FormComponent.vue';
+
+const formData = reactive({
+    fields:[
+        {
+            id: 'password',
+            type: 'password',
+            placeholder: 'Mot de passe',
+        }
+
+    ],
+    buttons:[
+
+    {
+        id: 'submit',
+        type: 'submit',
+        textContent: 'Se connecter',
+        class: 'is-primary'
+    },
+        
+    ]
+})
 
 const username = ref('');
 const password = ref('');
